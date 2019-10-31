@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import FormHoc from '../../Hoc/FormHoc';
 import FormInput from '../Form-input/Form-input';
 import Button from '../Button/Button';
-import { singInWithGoogle, singInWithFacebook } from '../../FireBase/FireBase.utils';
+import { auth, singInWithGoogle } from '../../FireBase/FireBase.utils';
 import styles from './Sing-in.module.scss';
 
 class SingIn extends Component {
@@ -13,27 +14,28 @@ class SingIn extends Component {
 		const { name, value } = e.target;
 		this.setState({ [name]: value });
 	};
-	onFormSubmit = (e) => {
+	onFormSubmit = async (e) => {
 		e.preventDefault();
-		this.setState({ email: '', password: '' });
+		const { email, password } = this.state;
+		try {
+			await auth.signInWithEmailAndPassword(email, password);
+			this.setState({ email: '', password: '' });
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	render() {
+		const { email, password } = this.state;
 		return (
-			<div className={styles.SingIn}>
+			<FormHoc>
 				<h1>I Already Have An Account </h1>
 				<span>Sing in with your email and password</span>
-				<form onSubmit={this.onFormSubmit}>
-					<FormInput
-						type='text'
-						onChange={this.onInputChange}
-						value={this.state.email}
-						name='email'
-						label='Email'
-					/>
+				<form onSubmit={this.onFormSubmit} className={styles.SingIn}>
+					<FormInput type='text' onChange={this.onInputChange} value={email} name='email' label='Email' />
 					<FormInput
 						type='password'
 						onChange={this.onInputChange}
-						value={this.state.password}
+						value={password}
 						name='password'
 						label='Password'
 					/>
@@ -44,12 +46,9 @@ class SingIn extends Component {
 						<Button vareint='secondry' type='submit' onClick={singInWithGoogle}>
 							Singin with google
 						</Button>
-						{/* <Button vareint='secondry' type='submit' onClick={singInWithFacebook}>
-							Singin with Facebook
-						</Button> */}
 					</div>
 				</form>
-			</div>
+			</FormHoc>
 		);
 	}
 }

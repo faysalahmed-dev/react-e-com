@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import HomePage from './Pages/HomePage/HomePage';
@@ -25,7 +24,9 @@ class App extends React.Component {
                 const userRef = await createDocument(user);
                 // get user data from firebase and set the state
                 getUserData(userRef, userData => {
-                    this.setState({ currentUser: userData });
+                    this.setState({ currentUser: userData }, () =>
+                        console.log(this.state.currentUser)
+                    );
                 });
             } else {
                 this.setState({ currentUser: null });
