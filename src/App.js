@@ -1,24 +1,22 @@
+/* eslint-disable import/no-named-as-default-member */
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import HomePage from './Pages/HomePage/HomePage';
+// eslint-disable-next-line import/no-named-as-default
+import ShopPage from './Pages/ShopPage/ShopPage';
+import SingInAndSingUpPage from './Pages/Singin-and-singup-page/SingIn-and-Singup-Page';
+import Header from './Component/Header/Header';
+import './App.style.scss';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Switch>
+        <Route exact path="/shop" component={ShopPage} />
+        <Route exact path="/singin" component={SingInAndSingUpPage} />
+        <Route exact path="/" component={HomePage} />
+      </Switch>
     </div>
   );
 }

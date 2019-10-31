@@ -1,0 +1,21 @@
+.header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 6em;
+	height: 9rem;
+	margin-bottom: 1.5em;
+	.logoContainer {
+		width: 7rem;
+		* {
+			display: block;
+		}
+	}
+
+	.navItems {
+		list-style: none;
+		display: flex;
+		align-items: center;
+	}
+}
