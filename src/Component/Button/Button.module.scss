@@ -1,19 +1,30 @@
-.buttonMain {
+@mixin buttonType($bg,$color) {
+	background-color: $bg;
+	color: $color;
+	&:hover {
+		background-color: $color;
+		color: $bg;
+		border: 1px solid $bg;
+	}
+}
+.customButton {
 	min-width: 12rem;
+	padding: 0 2rem;
 	width: auto;
-	height: 4rem;
+	height: 5rem;
 	letter-spacing: 0.5px;
-	line-height: 4rem;
-	font-size: 1.5rem;
-	background-color: black;
-	color: white;
+	line-height: 5rem;
+	font-size: 1.6rem;
 	text-transform: uppercase;
 	border: none;
 	cursor: pointer;
-
-	&:hover {
-		background-color: white;
-		color: black;
-		border: 1px solid black;
-	}
+	transition: all .2s;
+}
+.main {
+	border: 1px solid #000;
+	@include buttonType (#000,#fff);
+}
+.secondry {
+	border: 1px solid rgb(78, 123, 245);
+	@include buttonType (rgb(78, 123, 245),#fff);
 }

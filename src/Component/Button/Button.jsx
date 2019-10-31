@@ -5,7 +5,7 @@ const button = ({ children, vareint, ...others }) => {
 	if (!vareint) classs = styles.buttonMain;
 	else classs = styles[vareint];
 	return (
-		<button className={classs} {...others}>
+		<button className={[ styles.customButton, classs ].join(' ')} {...others}>
 			{children}
 		</button>
 	);

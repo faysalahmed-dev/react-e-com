@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormInput from '../Form-input/Form-input';
 import Button from '../Button/Button';
+import { singInWithGoogle, singInWithFacebook } from '../../FireBase/FireBase.utils';
 import styles from './Sing-in.module.scss';
 
 class SingIn extends Component {
@@ -36,9 +37,17 @@ class SingIn extends Component {
 						name='password'
 						label='Password'
 					/>
-					<Button vareint='buttonMain' type='submit'>
-						Submit
-					</Button>
+					<div className={styles.buttonGroup}>
+						<Button vareint='main' type='submit'>
+							Submit
+						</Button>
+						<Button vareint='secondry' type='submit' onClick={singInWithGoogle}>
+							Singin with google
+						</Button>
+						{/* <Button vareint='secondry' type='submit' onClick={singInWithFacebook}>
+							Singin with Facebook
+						</Button> */}
+					</div>
 				</form>
 			</div>
 		);
