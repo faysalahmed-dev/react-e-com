@@ -1,5 +1,5 @@
 .dropDownManu {
-	width: 30rem;
+	width: 33rem;
 	height: 40rem;
 	max-height: 60rem;
 	background: #fff;
@@ -7,11 +7,23 @@
 	right: 3rem;
 	top: 9rem;
 	z-index: 1000;
-	display: flex;
 	padding: 4em 3em;
 	box-shadow: 0 3rem 1.5rem rgba(#000, .3);
+	display: flex;
+	flex-direction: column;
+	ul {
+		flex: 1 1;
+		max-height: 40rem;
+		min-height: 30rem;
+		overflow: auto;
+		overflow-x: hidden;
+		margin-bottom: 1.5em;
+		li {
+			margin-bottom: 1.5em;
+		}
+	}
 	button {
+		display: block;
 		margin: 0 auto;
-		align-self: flex-end;
 	}
 }
