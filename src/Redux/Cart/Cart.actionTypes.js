@@ -1,1 +1,4 @@
-export const TOGGLE_CART = 'TOGGLE_CART'
+export default {
+  TOGGLE_CART: 'TOGGLE_CART',
+  ADD_ITEM_TO_CART: 'ADD_ITEM_TO_CART'
+};

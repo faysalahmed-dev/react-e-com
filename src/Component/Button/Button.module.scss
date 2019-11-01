@@ -28,3 +28,7 @@
 	border: 1px solid rgb(78, 123, 245);
 	@include buttonType (rgb(78, 123, 245),#fff);
 }
+.light {
+	border: 1px solid #000;
+	@include buttonType (#fff,#000);
+}

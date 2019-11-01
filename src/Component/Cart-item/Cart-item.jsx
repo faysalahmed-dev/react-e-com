@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import toggleCart from '../../Redux/Cart/Cart.actions';
+import { toggleCart } from '../../Redux/Cart/Cart.actions';
 import { ReactComponent as CartIcon } from '../../Assets/shopping-bag.svg';
 import styles from './Cart-item.module.scss';
 

@@ -2,10 +2,16 @@
 	width: 22%;
 	display: flex;
 	flex-direction: column;
-	height: 30rem;
+	height: 35rem;
 	align-items: center;
-	//box-shadow: 0 .5rem .5rem rgba(#000000, .2);
 	cursor: pointer;
+	&:hover .image .overLay {
+		opacity: 1;
+	}
+	&:hover .image button {
+		visibility: visible;
+		transform: translateY(0);
+	}
 	.image {
 		width: 100%;
 		height: 85%;
@@ -13,6 +19,26 @@
 		background-position: center;
 		margin-bottom: 1rem;
 		background-repeat: no-repeat;
+		display: flex;
+		align-items: flex-end;
+		position: relative;
+		overflow: hidden;
+		padding-bottom: 30px;
+		transition: all .3s;
+		.overLay {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: rgba(#000, .1);
+			opacity: 0;
+			transition: all .3s;
+		}
+		button {
+			transition: all .2s;
+			visibility: hidden;
+			margin: 0 auto;
+			transform: translateY(80px);
+		}
 	}
 
 	.collectionFooter {
