@@ -1,0 +1,24 @@
+@mixin centerItem {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.CartIconContainer {
+	width: 5rem;
+	height: 5rem;
+	position: relative;
+	cursor: pointer;
+
+	.CartIcon {
+		width: 3.5rem;
+		height: 3rem;
+		@include centerItem;
+		margin-top: -5px;
+	}
+	.CartItemNumber {
+		@include centerItem;
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+}

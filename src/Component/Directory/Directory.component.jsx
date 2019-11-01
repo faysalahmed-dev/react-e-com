@@ -52,7 +52,7 @@ class Directory extends Component {
 	render() {
 		return (
 			<div className={styles.directory}>
-				{this.state.section.map(({ id, ...others }) => <ManuItem id={id} {...others} />)}
+				{this.state.section.map(({ id, ...others }) => <ManuItem key={id} {...others} />)}
 			</div>
 		);
 	}

@@ -9,6 +9,9 @@
 	border-radius: 50px;
 }
 .navList {
+	&:not(:last-child) {
+		margin-right: 1.5em;
+	}
 	.navLink {
 		display: inline-block;
 		font-size: 1.9rem;
@@ -17,7 +20,6 @@
 		color: var(--main-font-color);
 		text-transform: capitalize;
 		position: relative;
-		margin-right: 1.5em;
 		padding: .3em;
 		&::before {
 			content: '';
