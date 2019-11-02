@@ -1,4 +1,4 @@
-const setUpItemQuntity = (cartItems, newCartItem) => {
+export const setUpItemQuntity = (cartItems, newCartItem) => {
   // first check the if cart item already in the list
   const checkCartItemInTheList = cartItems.find(
     item => item.id === newCartItem.id
@@ -14,4 +14,3 @@ const setUpItemQuntity = (cartItems, newCartItem) => {
   // if not in the cart item mean it is new cart item add base quantity 1
   return [...cartItems, { ...newCartItem, quantity: 1 }];
 };
-export default setUpItemQuntity;

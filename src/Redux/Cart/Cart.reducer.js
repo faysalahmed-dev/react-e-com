@@ -1,9 +1,9 @@
 import actionTypes from './Cart.actionTypes';
-import setUpItemQuntity from './Cart.utils';
+import { setUpItemQuntity } from './Cart.utils';
 
 const INTITAL_STATE = {
   hidden: true,
-  cartItem: []
+  cartItems: []
 };
 
 const cartReducer = (state = INTITAL_STATE, action) => {
@@ -16,7 +16,7 @@ const cartReducer = (state = INTITAL_STATE, action) => {
     case actionTypes.ADD_ITEM_TO_CART:
       return {
         ...state,
-        cartItem: setUpItemQuntity(state.cartItem, action.paylod)
+        cartItems: setUpItemQuntity(state.cartItems, action.paylod)
       };
     default:
       return state;
