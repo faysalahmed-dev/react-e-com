@@ -1,0 +1,20 @@
+.table {
+	width: 95%;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr) 60px;
+	border-bottom: 1px solid #000;
+	justify-items: center;
+	align-items: center;
+	.imgContainer {
+		padding: 0.6em;
+	}
+	img {
+		width: 80%;
+		margin: auto;
+		display: block;
+	}
+	.removeItem {
+		font-size: 2rem;
+		cursor: pointer;
+	}
+}

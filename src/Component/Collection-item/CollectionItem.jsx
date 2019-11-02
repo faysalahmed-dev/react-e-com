@@ -9,7 +9,7 @@ const collectionItem = ({ item, addItem }) => {
 	return (
 		<div className={styles.collectionItem}>
 			<div className={styles.image} style={{ backgroundImage: `url(${imageUrl})` }}>
-				<div className={styles.overLay} />
+				{/* <div className={styles.overLay} /> */}
 				<Button vareint='light' onClick={() => addItem(item)}>
 					Add To Cart
 				</Button>
