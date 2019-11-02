@@ -1,5 +1,5 @@
 import actionTypes from './Cart.actionTypes';
-import { setUpItemQuntity } from './Cart.utils';
+import { setUpItemQuntity, removeItem } from './Cart.utils';
 
 const INTITAL_STATE = {
   hidden: true,
@@ -22,6 +22,11 @@ const cartReducer = (state = INTITAL_STATE, action) => {
       return {
         ...state,
         cartItems: state.cartItems.filter(item => item.id !== action.paylod.id)
+      };
+    case actionTypes.REMOVE_ITEM:
+      return {
+        ...state,
+        cartItems: removeItem(state.cartItems, action.paylod)
       };
     default:
       return state;

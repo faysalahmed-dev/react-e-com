@@ -5,16 +5,25 @@
 	border-bottom: 1px solid #000;
 	justify-items: center;
 	align-items: center;
+	font-size: 2rem;
 	.imgContainer {
-		padding: 0.6em;
+		padding: 0.5em;
 	}
 	img {
 		width: 80%;
 		margin: auto;
 		display: block;
 	}
+	.quantityContainer {
+		display: flex;
+	}
 	.removeItem {
-		font-size: 2rem;
+		cursor: pointer;
+	}
+	.quantity {
+		margin: 0 1.5rem;
+	}
+	.arrow {
 		cursor: pointer;
 	}
 }

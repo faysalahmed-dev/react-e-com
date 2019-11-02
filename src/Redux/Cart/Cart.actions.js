@@ -11,3 +11,7 @@ export const removeItemFromCart = item => ({
   type: actionTypes.REMOVE_ITEM_FROM_CART,
   paylod: item
 });
+export const removeItem = item => ({
+  type: actionTypes.REMOVE_ITEM,
+  paylod: item
+});
