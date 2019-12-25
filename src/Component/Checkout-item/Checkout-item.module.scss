@@ -14,11 +14,14 @@
 		margin: auto;
 		display: block;
 	}
+	button {
+		cursor: pointer;
+		background: transparent;
+		outline: none;
+		border: none;
+	}
 	.quantityContainer {
 		display: flex;
-	}
-	.removeItem {
-		cursor: pointer;
 	}
 	.quantity {
 		margin: 0 1.5rem;

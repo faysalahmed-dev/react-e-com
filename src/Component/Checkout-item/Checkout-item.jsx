@@ -14,18 +14,18 @@ const CheckOutItem = ({ item, removeItemFromCartList, addItem, removeItem }) => 
 				</div>
 				<p>{name}</p>
 				<p className={styles.quantityContainer}>
-					<div className={styles.arrow} onClick={() => removeItem(item)}>
+					<button className={styles.arrow} onClick={() => removeItem(item)}>
 						&#10094;
-					</div>
+					</button>
 					<span className={styles.quantity}>{quantity}</span>
-					<div className={styles.arrow} onClick={() => addItem(item)}>
+					<button className={styles.arrow} onClick={() => addItem(item)}>
 						&#10095;
-					</div>
+					</button>
 				</p>
 				<p>{price}</p>
-				<p className={styles.removeItem} onClick={() => removeItemFromCartList(item)}>
+				<button className={styles.removeItem} onClick={() => removeItemFromCartList(item)}>
 					X
-				</p>
+				</button>
 			</div>
 		</div>
 	);
