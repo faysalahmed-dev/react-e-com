@@ -5,10 +5,15 @@ import logger from 'redux-logger';
 
 import rootReducer from './root.reducer';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+let composeEnhancers = compose;
 
 // list of all the middlerware
-const middleWare = [logger];
+const middleWare = [];
+// in development add logger and readux dev tools
+if (process.env.NODE_ENV === 'development') {
+  middleWare.push(logger);
+  composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+}
 
 // create the store
 export const store = createStore(
