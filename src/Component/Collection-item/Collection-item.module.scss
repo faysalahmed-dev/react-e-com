@@ -1,0 +1,51 @@
+.collectionItem {
+  display: flex;
+  flex-direction: column;
+  height: 35rem;
+  align-items: center;
+  cursor: pointer;
+  &:hover .image .overLay {
+    opacity: 1;
+  }
+  &:hover .image button {
+    visibility: visible;
+    transform: translateY(0);
+  }
+  .image {
+    width: 100%;
+    height: 85%;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 1rem;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 30px;
+    transition: all 0.3s;
+    button {
+      transition: all 0.2s;
+      visibility: hidden;
+      margin: 0 auto;
+      transform: translateY(80px);
+    }
+  }
+
+  .collectionFooter {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.8rem;
+    padding: 0 1.5rem;
+    .name {
+      width: 90%;
+    }
+
+    .price {
+      width: 10%;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+@mixin itemContainer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0 3rem;
+  padding-left: 6rem;
+}
