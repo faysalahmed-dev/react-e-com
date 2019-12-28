@@ -1,11 +1,12 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+
 const fireStore = firebase.firestore();
 
 export const createDocument = async (userAuth, data) => {
     if (!userAuth) return;
-    //find the document
-    const userRef = fireStore.doc(`user/${userAuth.uid}`);
+    // find the document
+    const userRef = await fireStore.doc(`user/${userAuth.uid}`);
     // get user info
     const user = await userRef.get();
     // check user is exists

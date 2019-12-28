@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { collectionOverviewSelector } from '../../Redux/Shop/Shop.selector';
+import {
+  collectionOverviewSelector,
+  loadingSpinnerSelector
+} from '../../Redux/Shop/Shop.selector';
 
 import PreviewCollections from '../Preview-collections/preview-collections';
+
+import WithSpinner from '../With-spinner/WithSpinner';
 
 const collectionOverview = ({ collection }) => {
   return (
@@ -14,9 +19,9 @@ const collectionOverview = ({ collection }) => {
     </div>
   );
 };
-
 const mapStateToProps = createStructuredSelector({
-  collection: collectionOverviewSelector
+  collection: collectionOverviewSelector,
+  isLoading: loadingSpinnerSelector
 });
 
-export default connect(mapStateToProps)(collectionOverview);
+export default connect(mapStateToProps)(WithSpinner(collectionOverview));
