@@ -1,9 +1,34 @@
 import shopActionTypes from './Shop.actionTypes';
 
-export const updateCollection = payload => ({
-  type: shopActionTypes.UPDATE_COLLECTION,
+import {
+  firestore,
+  transformDataFromSnapshot
+} from '../../FireBase/FireBase.utils';
+
+export const fetchCollectionStart = () => ({
+  type: shopActionTypes.COLLECTION_FETCHING_START
+});
+
+export const fetchCollectionSuccess = payload => ({
+  type: shopActionTypes.COLLECTION_FETCH_SUCCESSFUL,
   payload
 });
-export const offSpiner = () => ({
-  type: shopActionTypes.OFF_SPINER
+
+export const fetchCollectionFail = payload => ({
+  type: shopActionTypes.COLLECTION_FETCH_FAIL,
+  payload
 });
+
+export const fetchCollections = () => {
+  return dispatch => {
+    dispatch(fetchCollectionStart()); // to start loading
+    const collectionRef = firestore.collection('collection');
+    collectionRef.onSnapshot(
+      async doc => {
+        const collectionMap = transformDataFromSnapshot(doc);
+        await dispatch(fetchCollectionSuccess(collectionMap));
+      },
+      error => dispatch(fetchCollectionFail(error.message))
+    );
+  };
+};

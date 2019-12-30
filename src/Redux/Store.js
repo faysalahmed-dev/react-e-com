@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import { persistStore } from 'redux-persist';
 
 import logger from 'redux-logger';
@@ -8,7 +9,7 @@ import rootReducer from './root.reducer';
 let composeEnhancers = compose;
 
 // list of all the middlerware
-const middleWare = [];
+const middleWare = [thunk];
 // in development add logger and readux dev tools
 if (process.env.NODE_ENV === 'development') {
   middleWare.push(logger);

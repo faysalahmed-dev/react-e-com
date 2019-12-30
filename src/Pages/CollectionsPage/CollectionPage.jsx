@@ -1,9 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  collectionSelector,
-  loadingSpinnerSelector
-} from '../../Redux/Shop/Shop.selector';
+import { collectionSelector } from '../../Redux/Shop/Shop.selector';
 import CollectionItem from '../../Component/Collection-item/Collection-item';
 
 import WithSpinner from '../../Component/With-spinner/WithSpinner';
@@ -24,7 +21,6 @@ const CollectionsPage = ({ collections }) => {
   );
 };
 const mapStateToProps = (state, ownProps) => ({
-  collections: collectionSelector(ownProps.match.params.categoryId)(state),
-  isLoading: state.shop.isLoading
+  collections: collectionSelector(ownProps.match.params.categoryId)(state)
 });
 export default connect(mapStateToProps)(WithSpinner(CollectionsPage));

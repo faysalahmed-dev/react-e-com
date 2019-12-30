@@ -19,8 +19,6 @@ import {
 import { setCurrentUser } from './Redux/User/User.actions';
 import { selectCurrentUser } from './Redux/User/User.selector';
 
-import './App.style.scss';
-
 class App extends React.Component {
   unSubscribeFromAuth = null;
 

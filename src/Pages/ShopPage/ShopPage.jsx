@@ -1,46 +1,54 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-
-import {
-  firestore,
-  transformDataFromSnapshot
-} from '../../FireBase/FireBase.utils';
+import { createStructuredSelector } from 'reselect';
 
 import CollectionsOverview from '../../Component/Collections-overview/Collections-overview';
 import CollectionPage from '../CollectionsPage/CollectionPage';
 
-import { updateCollection, offSpiner } from '../../Redux/Shop/Shop.action';
+import { fetchCollections } from '../../Redux/Shop/Shop.action';
+import { loadingSpinnerSelector } from '../../Redux/Shop/Shop.selector';
 
 import styles from './ShopPage.module.scss';
 
 class ShopPage extends Component {
   componentDidMount() {
-    const { shopUpdateCollection, disabledSpinner } = this.props;
-    const collectionRef = firestore.collection('collection');
-    collectionRef.onSnapshot(async doc => {
-      await shopUpdateCollection(transformDataFromSnapshot(doc));
-      disabledSpinner();
-    });
+    const { fetchCollectionsAsync } = this.props;
+    fetchCollectionsAsync();
   }
   render() {
     const {
-      match: { path }
+      match: { path },
+      isLoading
     } = this.props;
     return (
       <div className={styles.shopPage}>
-        <Route path={path} exact component={CollectionsOverview} />
-        <Route path={`${path}/:categoryId`} exact component={CollectionPage} />
+        <Route
+          path={path}
+          exact
+          render={routeName => (
+            <CollectionsOverview isLoading={isLoading} {...routeName} />
+          )}
+        />
+        <Route
+          path={`${path}/:categoryId`}
+          exact
+          render={routeName => (
+            <CollectionPage isLoading={isLoading} {...routeName} />
+          )}
+        />
       </div>
     );
   }
 }
 const mapDispatchToProps = dispatch => ({
-  shopUpdateCollection: collections => dispatch(updateCollection(collections)),
-  disabledSpinner: () => dispatch(offSpiner())
+  fetchCollectionsAsync: () => dispatch(fetchCollections())
+});
+const mapStateToProps = createStructuredSelector({
+  isLoading: loadingSpinnerSelector
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ShopPage);
