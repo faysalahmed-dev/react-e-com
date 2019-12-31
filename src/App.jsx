@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -13,41 +13,32 @@ import Header from './Component/Header/Header';
 import userAction from './Redux/User/User.actions';
 import { selectCurrentUser } from './Redux/User/User.selector';
 
-class App extends React.Component {
-    unSubscribeFromAuth = null;
-
-    componentDidMount() {
-        const { checkSession } = this.props;
+const App = ({ checkSession, currentUser }) => {
+    useEffect(() => {
         checkSession();
-    }
-    // componentWillUnmount() {
-    //     this.unSubscribeFromAuth();
-    // }
-    render() {
-        const { currentUser } = this.props;
-        return (
-            <div>
-                <Header />
-                <Switch>
-                    <Route path="/shop" component={ShopPage} />
-                    <Route exact path="/checkout" component={CheckoutPage} />
-                    <Route
-                        exact
-                        path="/singin"
-                        render={() =>
-                            currentUser ? (
-                                <Redirect to="/" />
-                            ) : (
-                                <SingInAndSingUpPage />
-                            )
-                        }
-                    />
-                    <Route exact path="/" component={HomePage} />
-                </Switch>
-            </div>
-        );
-    }
-}
+    }, [checkSession]);
+    return (
+        <div>
+            <Header />
+            <Switch>
+                <Route path="/shop" component={ShopPage} />
+                <Route exact path="/checkout" component={CheckoutPage} />
+                <Route
+                    exact
+                    path="/singin"
+                    render={() =>
+                        currentUser ? (
+                            <Redirect to="/" />
+                        ) : (
+                            <SingInAndSingUpPage />
+                        )
+                    }
+                />
+                <Route exact path="/" component={HomePage} />
+            </Switch>
+        </div>
+    );
+};
 
 const mapStateToProps = createStructuredSelector({
     currentUser: selectCurrentUser

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -12,39 +12,30 @@ import { loadingSpinnerSelector } from '../../Redux/Shop/Shop.selector';
 
 import styles from './ShopPage.module.scss';
 
-class ShopPage extends Component {
-    componentDidMount() {
-        const { fetchCollectionsAsync } = this.props;
+const ShopPage = ({ fetchCollectionsAsync, isLoading, match: { path } }) => {
+    useEffect(() => {
         fetchCollectionsAsync();
-    }
-    render() {
-        const {
-            match: { path },
-            isLoading
-        } = this.props;
-        return (
-            <div className={styles.shopPage}>
-                <Route
-                    path={path}
-                    exact
-                    render={routeName => (
-                        <CollectionsOverview
-                            isLoading={isLoading}
-                            {...routeName}
-                        />
-                    )}
-                />
-                <Route
-                    path={`${path}/:categoryId`}
-                    exact
-                    render={routeName => (
-                        <CollectionPage isLoading={isLoading} {...routeName} />
-                    )}
-                />
-            </div>
-        );
-    }
-}
+    }, [fetchCollectionsAsync]);
+    return (
+        <div className={styles.shopPage}>
+            <Route
+                path={path}
+                exact
+                render={routeName => (
+                    <CollectionsOverview isLoading={isLoading} {...routeName} />
+                )}
+            />
+            <Route
+                path={`${path}/:categoryId`}
+                exact
+                render={routeName => (
+                    <CollectionPage isLoading={isLoading} {...routeName} />
+                )}
+            />
+        </div>
+    );
+};
+
 const mapDispatchToProps = dispatch => ({
     fetchCollectionsAsync: () => dispatch(fetchCollectionStart())
 });
