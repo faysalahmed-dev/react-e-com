@@ -19,6 +19,7 @@ export const fetchCollectionFail = payload => ({
   payload
 });
 
+// fetch collections using redux thunk
 export const fetchCollections = () => {
   return dispatch => {
     dispatch(fetchCollectionStart()); // to start loading
