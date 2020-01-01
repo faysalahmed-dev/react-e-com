@@ -31,8 +31,7 @@ const App = ({ checkSession, currentUser }) => {
                             <Redirect to="/" />
                         ) : (
                             <SingInAndSingUpPage />
-                        )
-                    }
+                        )}
                 />
                 <Route exact path="/" component={HomePage} />
             </Switch>
